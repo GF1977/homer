@@ -1,5 +1,5 @@
 # build stage
-FROM --platform=$BUILDPLATFORM node:24-alpine3.23 AS build-stage
+FROM --platform=$BUILDPLATFORM node:24.22.1-alpine3.23 AS build-stage
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
