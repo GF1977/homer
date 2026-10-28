@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/GF1977/homer/compare/v1.1.0...v1.2.0) (2026-10-28)
+
+
+### Features
+
+* add access log configuration for lighttpd and update documentation ([b39ce2f](https://github.com/GF1977/homer/commit/b39ce2fcc132a643e97aa84fdaa9aa03959abce8))
+
 # [1.1.0](https://github.com/GF1977/homer/compare/v1.0.0...v1.1.0) (2026-10-28)
 
 
