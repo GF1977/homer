@@ -121,6 +121,10 @@ If you would like to change internal port of Homer from default `8080` to your p
 - **`IPV6_DISABLE`** (default: 0)
 Set to `1` to disable listening on IPv6.
 
+- **`LOG_LEVEL`** (default: `info`)
+Minimum level of messages written to the browser console: `debug`, `info`, `warn`, `error` or `silent`.
+Overridden by the `logLevel` option in `config.yml` when set.
+
 ### Using the release tarball (prebuilt, ready to use)
 
 Download and extract the latest release (`homer.zip`) from the [release page](https://github.com/bastienwirtz/homer/releases), rename the `assets/config.yml.dist` file to `assets/config.yml`, and put it behind a web server.

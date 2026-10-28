@@ -13,6 +13,20 @@ if [[ "${INIT_ASSETS}" == "1" ]] && [[ ! -f "/www/assets/config.yml" ]]; then
     fi
 fi
 
+# Optional runtime log level, consumed by the frontend (log-level.js)
+log_level="$(printf '%s' "${LOG_LEVEL:-}" | tr '[:upper:]' '[:lower:]')"
+case "${log_level}" in
+    ""|debug|info|warn|error|silent) ;;
+    *)
+        echo "Invalid LOG_LEVEL '${LOG_LEVEL}', expected debug, info, warn, error or silent. Ignoring."
+        log_level=""
+        ;;
+esac
+
+if ! printf 'window.__LOG_LEVEL__ = "%s";\n' "${log_level}" > /www/log-level.js 2>/dev/null; then
+    echo "Could not write /www/log-level.js, runtime LOG_LEVEL will be ignored."
+fi
+
 echo "Starting webserver"
 exec 3>&1
 exec lighttpd -D -f /lighttpd.conf

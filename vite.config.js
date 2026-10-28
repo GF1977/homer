@@ -79,6 +79,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: null,
+        globIgnores: ["log-level.js", "**/log-level.js"],
       },
     }),
   ],

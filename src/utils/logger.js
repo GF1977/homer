@@ -25,9 +25,20 @@ function normalizeLevel(value) {
   return Object.hasOwn(LEVELS, level) ? level : null;
 }
 
-let currentLevel = normalizeLevel(
-  typeof __LOG_LEVEL__ === "undefined" ? null : __LOG_LEVEL__,
-) ?? DEFAULT_LEVEL;
+function getRuntimeLevel() {
+  if (typeof window !== "undefined") {
+    return window.__LOG_LEVEL__;
+  }
+  return null;
+}
+
+const buildLevel =
+  typeof __LOG_LEVEL__ === "undefined" ? null : __LOG_LEVEL__;
+
+let currentLevel =
+  normalizeLevel(getRuntimeLevel()) ??
+  normalizeLevel(buildLevel) ??
+  DEFAULT_LEVEL;
 let installed = false;
 
 function isEnabled(level) {

@@ -37,7 +37,7 @@ connectivityCheck: true # whether you want to display a message when the apps ar
 
 # Optional: minimum level of messages written to the browser console.
 # One of 'debug', 'info', 'warn', 'error' or 'silent'. Defaults to 'info'.
-# Can also be set at build time with the LOG_LEVEL environment variable.
+# When omitted, the LOG_LEVEL environment variable is used instead (runtime in Docker, or build time).
 # logLevel: info
 
 # Optional: Proxy / hosting option
