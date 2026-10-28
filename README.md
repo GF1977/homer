@@ -125,6 +125,9 @@ Set to `1` to disable listening on IPv6.
 Minimum level of messages written to the browser console: `debug`, `info`, `warn`, `error` or `silent`.
 Overridden by the `logLevel` option in `config.yml` when set.
 
+- **`ACCESS_LOG`** (default: `1`)
+Set to `0` to disable the lighttpd HTTP access logs.
+
 ### Using the release tarball (prebuilt, ready to use)
 
 Download and extract the latest release (`homer.zip`) from the [release page](https://github.com/bastienwirtz/homer/releases), rename the `assets/config.yml.dist` file to `assets/config.yml`, and put it behind a web server.

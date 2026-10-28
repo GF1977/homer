@@ -35,7 +35,8 @@ ENV GID=1000 \
     PORT=8080 \
     SUBFOLDER="/_" \
     INIT_ASSETS=1 \
-    IPV6_DISABLE=0
+    IPV6_DISABLE=0 \
+    ACCESS_LOG=1
 
 RUN addgroup -S lighttpd -g ${GID} && adduser -D -S -u ${UID} lighttpd lighttpd && \
     apk add -U --no-cache tzdata lighttpd
@@ -44,6 +45,7 @@ WORKDIR /www
 
 COPY lighttpd.conf /lighttpd.conf
 COPY lighttpd-ipv6.sh /etc/lighttpd/ipv6.sh
+COPY lighttpd-accesslog.sh /etc/lighttpd/accesslog.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY --from=build-stage --chown=${UID}:${GID} /app/dist /www/
 COPY --from=build-stage --chown=${UID}:${GID} /app/dist/assets /www/default-assets
