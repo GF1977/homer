@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/GF1977/homer/compare/v1.0.0...v1.1.0) (2026-10-28)
+
+
+### Bug Fixes
+
+* update Node.js version in .nvmrc and Dockerfile to 24.22.1 ([2545f7b](https://github.com/GF1977/homer/commit/2545f7ba91ec12b79a53cf6b50183ab41443f63e))
+* update Node.js version in semantic-release workflow to 24.22.1 ([57c3f37](https://github.com/GF1977/homer/commit/57c3f37469e613f4d499f8c6ca7a819ecefd04ea))
+
+
+### Features
+
+* add runtime log level configuration and update related documentation ([4e564b4](https://github.com/GF1977/homer/commit/4e564b4b7050f36ca9dacbc0c931963a912cf9ad))
+
 # 1.0.0 (2026-10-28)
 
 
