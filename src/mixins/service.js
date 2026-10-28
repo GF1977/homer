@@ -1,4 +1,5 @@
 import updateScheduler from "@/utils/updateScheduler.js";
+import logger from "@/utils/logger.js";
 
 // Header names are case-insensitive, so they are lowercased before merging and
 // each source overrides the previous one whatever its casing. Unset values are
@@ -130,7 +131,7 @@ export default {
 
         for (const key of deprecatedKeys) {
           if (Object.hasOwn(this.item, key)) {
-            console.warn(
+            logger.warn(
               `[DEPRECATED] Service "${this.item.name || "unknown"}" uses deprecated config key "${key}". ` +
                 `Please use "${intervalKey}" instead. Support for "${key}" will be removed in a future version.`,
             );

@@ -1,6 +1,9 @@
 import "./assets/app.scss";
 import { createApp, h } from "vue";
 import App from "./App.vue";
+import { installConsoleFilter } from "./utils/logger.js";
+
+installConsoleFilter();
 
 const app = createApp(App);
 import Generic from "./components/services/Generic.vue";

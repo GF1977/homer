@@ -15,6 +15,7 @@ export default defineConfig([
       globals: {
         ...globals.browser,
         __APP_VERSION__: "readable",
+        __LOG_LEVEL__: "readable",
       },
     },
   },

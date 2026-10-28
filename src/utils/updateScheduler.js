@@ -5,6 +5,8 @@
  *
  */
 
+import logger from "@/utils/logger.js";
+
 const TICK_INTERVAL_MS = 1000; // 1 second tick resolution
 const MIN_INTERVAL_MS = TICK_INTERVAL_MS; // Minimum allowed update interval
 
@@ -17,12 +19,12 @@ class UpdateScheduler {
 
   register(component, intervalMs, updateMethod) {
     if (!component || !updateMethod || intervalMs <= 0) {
-      console.warn("UpdateScheduler: Invalid registration parameters");
+      logger.warn("UpdateScheduler: Invalid registration parameters");
       return;
     }
 
     if (intervalMs < MIN_INTERVAL_MS) {
-      console.warn(
+      logger.warn(
         `UpdateScheduler: Interval ${intervalMs}ms is below minimum. Adjusting to ${MIN_INTERVAL_MS}ms`,
       );
       intervalMs = MIN_INTERVAL_MS;
@@ -32,7 +34,7 @@ class UpdateScheduler {
     const componentId = this.generateComponentId(component);
 
     if (!componentId) {
-      console.error(`UpdateScheduler: invalid component id`);
+      logger.error(`UpdateScheduler: invalid component id`);
       return;
     }
 
@@ -44,7 +46,7 @@ class UpdateScheduler {
     });
 
     this.startGlobalTimer();
-    console.log(
+    logger.info(
       `UpdateScheduler: Registered component with ${intervalSeconds}s interval`,
     );
   }
@@ -54,7 +56,7 @@ class UpdateScheduler {
     const removed = this.registeredComponents.delete(componentId);
 
     if (removed) {
-      console.log("UpdateScheduler: Unregistered component");
+      logger.info("UpdateScheduler: Unregistered component");
     }
 
     if (this.registeredComponents.size === 0) {
@@ -76,7 +78,7 @@ class UpdateScheduler {
         this.processUpdates();
       }, TICK_INTERVAL_MS);
 
-      console.log("UpdateScheduler: Global timer started");
+      logger.info("UpdateScheduler: Global timer started");
     }
   }
 
@@ -85,7 +87,7 @@ class UpdateScheduler {
       clearInterval(this.globalTimer);
       this.globalTimer = null;
       this.tickCount = 0;
-      console.log("UpdateScheduler: Global timer stopped");
+      logger.info("UpdateScheduler: Global timer stopped");
     }
   }
 
@@ -97,7 +99,7 @@ class UpdateScheduler {
           config.lastUpdate = this.tickCount;
         }
       } catch (error) {
-        console.error("UpdateScheduler: Error during component update:", error);
+        logger.error("UpdateScheduler: Error during component update:", error);
       }
     }
   }

@@ -9,6 +9,9 @@ import vue from "@vitejs/plugin-vue";
 
 import { version } from "./package.json";
 
+const logLevel =
+  process.env.LOG_LEVEL || process.env.VITE_LOG_LEVEL || "info";
+
 function writeVersionPlugin() {
   return {
     name: "write-version",
@@ -26,6 +29,7 @@ export default defineConfig({
   },
   define: {
     __APP_VERSION__: JSON.stringify(version),
+    __LOG_LEVEL__: JSON.stringify(logLevel),
   },
   plugins: [
     writeVersionPlugin(),

@@ -323,6 +323,16 @@
       "type": "boolean",
       "description": "# whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example). You should set it to true when using an authentication proxy, it also reloads the page when a redirection is detected when checking connectivity."
     },
+    "logLevel": {
+      "enum": [
+        "debug",
+        "info",
+        "warn",
+        "error",
+        "silent"
+      ],
+      "description": "Minimum level of messages written to the browser console. Defaults to 'info'. Can also be set at build time with the LOG_LEVEL environment variable."
+    },
     "proxy": {
       "$ref": "#/definitions/Proxy",
       "description": "Optional: Proxy / hosting option"

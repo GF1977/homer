@@ -117,6 +117,7 @@ import DarkMode from "./components/DarkMode.vue";
 import DynamicTheme from "./components/DynamicTheme.vue";
 
 import defaultConfig from "./assets/defaults.yml?raw";
+import logger from "./utils/logger.js";
 
 export default {
   name: "App",
@@ -159,7 +160,7 @@ export default {
     this.buildDashboard();
     window.onhashchange = this.buildDashboard;
     this.loaded = true;
-    console.info(`Homer v${__APP_VERSION__}`);
+    logger.info(`Homer v${__APP_VERSION__}`);
   },
   beforeUnmount() {
     window.onhashchange = null;
@@ -184,8 +185,11 @@ export default {
           config = Object.assign(config, pageConfig);
         }
       } catch (error) {
-        console.log(error);
+        logger.error(error);
         config = this.handleErrors("⚠️ Error loading configuration", error);
+      }
+      if (config.logLevel) {
+        logger.setLevel(config.logLevel);
       }
       this.config = merge(defaults, config);
       this.services = this.config.services;
@@ -245,7 +249,7 @@ export default {
         const service = this.services[0].items[0];
         window.open(service.url, target || service.target || "_self");
       } catch {
-        console.warn("fail to open service");
+        logger.warn("fail to open service");
       }
     },
     filterServices: function (filter) {

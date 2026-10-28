@@ -35,6 +35,11 @@ columns: "3" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
 connectivityCheck: true # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example).
                         # You should set it to true when using an authentication proxy, it also reloads the page when a redirection is detected when checking connectivity.
 
+# Optional: minimum level of messages written to the browser console.
+# One of 'debug', 'info', 'warn', 'error' or 'silent'. Defaults to 'info'.
+# Can also be set at build time with the LOG_LEVEL environment variable.
+# logLevel: info
+
 # Optional: Proxy / hosting option
 proxy:
   useCredentials: false # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level. 
